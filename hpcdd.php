@@ -79,4 +79,13 @@ function run_hpcdd() {
 	$plugin->run();
 
 }
+
+add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'hpc_add_plugin_page_settings_link');
+function hpc_add_plugin_page_settings_link( $links ) {
+    $links[] = '<a href="' .
+        admin_url( 'admin.php?page=hpcdd' ) .
+        '">' . __('Settings') . '</a>';
+    return $links;
+}
+
 run_hpcdd();
