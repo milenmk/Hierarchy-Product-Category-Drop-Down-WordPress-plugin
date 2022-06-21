@@ -16,17 +16,20 @@ This plugin displays a drop-down select with WooCommerce product categories.
 It is possible to select just one or two selects and click the search button.
 It displays only the categories that have products.
 
-Main Features:
+=== Main Features: ===
+
 Displays product categories as dependent drop-down selects.
+
 Can be added to any page as a widget or with a shortcode.
+
 Max depth of categories: 3 (one main category and 3 sub-categories) i.e.
 - Main category
 -- First subcategory
 --- Second subcategory
 ---- Third subcategory
+
 This plugin is inspired by the abandoned Product Category Dropdowns.
 
-For questions and Support: milen@blacktiehost.com
 
 == Installation ==
 
@@ -52,7 +55,5 @@ For questions and Support: milen@blacktiehost.com
 
 == LINKS ==
 
-My website: [](http://blacktiehost.com/)
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
+My website: http://blacktiehost.com
+For questions and Support: (milen@blacktiehost.com)
