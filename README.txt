@@ -56,4 +56,4 @@ This plugin is inspired by the abandoned Product Category Dropdowns.
 == LINKS ==
 
 My website: http://blacktiehost.com
-For questions and Support: (milen@blacktiehost.com)
+For questions and Support: milen@blacktiehost.com
