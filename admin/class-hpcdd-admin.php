@@ -70,7 +70,7 @@ class Hpcdd_Admin
          * This function is provided for demonstration purposes only.
          *
          * An instance of this class should be passed to the run() function
-         * defined in Hpcdd_Loader as all of the hooks are defined
+         * defined in Hpcdd_Loader as all the hooks are defined
          * in that particular class.
          *
          * The Hpcdd_Loader will then create the relationship
@@ -78,7 +78,7 @@ class Hpcdd_Admin
          * class.
          */
 
-        wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/hpcdd-admin.css', array(), $this->version, 'all');
+        wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/hpcdd-admin.css', array(), $this->version);
 
     }
 
@@ -94,7 +94,7 @@ class Hpcdd_Admin
          * This function is provided for demonstration purposes only.
          *
          * An instance of this class should be passed to the run() function
-         * defined in Hpcdd_Loader as all of the hooks are defined
+         * defined in Hpcdd_Loader as all the hooks are defined
          * in that particular class.
          *
          * The Hpcdd_Loader will then create the relationship
@@ -102,7 +102,7 @@ class Hpcdd_Admin
          * class.
          */
 
-        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/hpcdd-admin.js', array('jquery'), $this->version, false);
+        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/hpcdd-admin.js', array('jquery'), $this->version);
 
     }
 
@@ -123,7 +123,7 @@ class Hpcdd_Admin
     public function displayPluginAdminSettings()
     {
         // set this var to be used in the settings-display view
-        $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'general';
+        $active_tab = $_GET['tab'] ?? 'general';
         if (isset($_GET['error_message'])) {
             add_action('admin_notices', array($this, 'hpcddSettingsMessages'));
             do_action('admin_notices', $_GET['error_message']);

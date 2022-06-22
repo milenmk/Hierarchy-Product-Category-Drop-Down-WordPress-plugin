@@ -60,7 +60,6 @@ class Hpcdd
 
     protected $_pluginUrl;
     protected $_pluginPath;
-    protected $_widgetId = '';
 
     /**
      * Define the core functionality of the plugin.
@@ -225,7 +224,7 @@ class Hpcdd
 
     }
 
-    public function show_selector_by_shortcode($atts)
+    public function show_selector_by_shortcode()
     {
         ob_start();
 
