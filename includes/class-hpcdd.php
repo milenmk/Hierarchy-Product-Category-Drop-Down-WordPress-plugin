@@ -221,7 +221,7 @@ class Hpcdd
         add_action('wp_ajax_getLvl4', 'getLvl4');
         add_action('wp_ajax_nopriv_getLvl4', 'getLvl4');
 
-        add_shortcode('hpcdd_category_selector', array($this, 'show_selector_by_shortcode'));
+        add_action('init', array($this, 'hpcdd_shortcodes_init'));
 
     }
 
@@ -235,9 +235,33 @@ class Hpcdd
         $this->_widgetId = $id;
     }
 
-    public function show_selector_by_shortcode()
+    /**
+     * Central location to create all shortcodes.
+     */
+    public function hpcdd_shortcodes_init()
     {
-        $this->setWidgetId(rand(1, 99999));
+        add_shortcode('hpcdd_show_selector', array($this, 'hpcdd_shortcode'));
+    }
+
+    public function hpcdd_shortcode($atts = [])
+    {
+        // normalize attribute keys, lowercase
+        $atts = array_change_key_case((array)$atts, CASE_LOWER);
+
+        // override default attributes with user attributes
+        $hpcdd_atts = shortcode_atts(
+            array(
+                'name' => 'hpcddtest',
+                'id' => '',
+            ), $atts
+        );
+
+        return $this->getContent($hpcdd_atts['name'], $hpcdd_atts['id']);
+    }
+
+    public function getContent($name, $id)
+    {
+        $this->setWidgetId($name . '_' . $id);
 
         ob_start();
 

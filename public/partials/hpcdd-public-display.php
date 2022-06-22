@@ -14,12 +14,12 @@
 
 ?>
     <div class="hpcdd-selector-box" id="<?php echo $this->getWidgetId(); ?>">
-        <div class="block-content" id="hpcdd-form">
+        <div class="block-content hpcdd-form">
 
             <form method="post">
 
                 <div class="row">
-                    <select class="hpcdd-select" name="lvl1" id="lvl1">
+                    <select class="hpcdd-select lvl1" name="lvl1">
                         <option value=""><?php echo __('Select Main Category', 'hpcdd') ?></option>
                         <?php
                         foreach ($this->getTopLevelCategories() as $category) {
@@ -30,14 +30,14 @@
                 </div>
 
                 <div class="row">
-                    <select class="hpcdd-select" name="lvl2" id="lvl2">
+                    <select class="hpcdd-select lvl2" name="lvl2">
                         <option value=""><?php echo __('Select First Subcategory', 'hpcdd') ?></option>
                     </select>
                 </div>
 
                 <?php if (get_option('hpcdd_levels_setting') == 3 || get_option('hpcdd_levels_setting') == 4) { ?>
                     <div class="row">
-                        <select class="hpcdd-select" name="lvl3" id="lvl3">
+                        <select class="hpcdd-select lvl3" name="lvl3">
                             <option value=""><?php echo __('Select Second Subcategory', 'hpcdd') ?></option>
                         </select>
                     </div>
@@ -45,7 +45,7 @@
 
                 <?php if (get_option('hpcdd_levels_setting') == 4) { ?>
                     <div class="row">
-                        <select class="hpcdd-select" name="lvl4" id="lvl4">
+                        <select class="hpcdd-select lvl4" name="lvl4">
                             <option value=""><?php echo __('Select Third Subcategory', 'hpcdd') ?></option>
                         </select>
                     </div>
@@ -58,7 +58,7 @@
                     </button>
                 </div>
 
-                <img id="loader" class="loader" src="<?php print plugins_url('/', __DIR__) . 'img/loader.gif' ?>"
+                <img class="hpcdd-loader" src="<?php print plugins_url('/', __DIR__) . 'img/loader.gif' ?>"
                      hidden/>
 
             </form>
