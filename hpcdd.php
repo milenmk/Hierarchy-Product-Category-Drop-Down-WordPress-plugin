@@ -18,7 +18,7 @@
  * Description:       Show hierarchy dropdown to search woocommerce products per category.
  * Version:           1.0.0
  * Author:            Milen Karaganski
- * Author URI:        https://blacktiehost.com
+ * Author URI:        https://bg.blacktiehost.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       hpcdd

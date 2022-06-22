@@ -60,7 +60,6 @@ class Hpcdd
 
     protected $_pluginUrl;
     protected $_pluginPath;
-    protected $_widgetId = '';
 
     /**
      * Define the core functionality of the plugin.
@@ -154,7 +153,7 @@ class Hpcdd
     }
 
     /**
-     * Register all of the hooks related to the admin area functionality
+     * Register all the hooks related to the admin area functionality
      * of the plugin.
      *
      * @since    1.0.0
@@ -194,7 +193,7 @@ class Hpcdd
     }
 
     /**
-     * Register all of the hooks related to the public-facing functionality
+     * Register all the hooks related to the public-facing functionality
      * of the plugin.
      *
      * @since    1.0.0
@@ -219,16 +218,18 @@ class Hpcdd
 
     }
 
-    public function show_selector_by_shortcode($atts)
+    public function show_selector_by_shortcode()
     {
 
         ob_start();
 
         $this->toHtml();
 
-        $contents = ob_get_clean();
+        //$contents = ob_get_clean();
 
-        return $contents;
+        //return $contents;
+
+        return ob_get_clean();
     }
 
     /**
@@ -240,14 +241,21 @@ class Hpcdd
 
     }
 
+    public function clean($data)
+    {
+        $data = htmlspecialchars($data);
+        $data = stripslashes($data);
+        $data = trim($data);
+
+        return $data;
+    }
+
     /**
      * @return array
      */
     public function getTopLevelCategories()
     {
 
-        $taxonomy = 'product_cat';
-        $orderby = 'name';
         $show_count = 1;      // 1 for yes, 0 for no
         $pad_counts = 1;      // 1 for yes, 0 for no
         $hierarchical = 1;    // 1 for yes, 0 for no
@@ -256,8 +264,8 @@ class Hpcdd
         $parentid = 0;
 
         $args = array(
-            'taxonomy' => $taxonomy,
-            'orderby' => $orderby,
+            'taxonomy' => 'product_cat',
+            'orderby' => 'name',
             'show_count' => $show_count,
             'pad_counts' => $pad_counts,
             'hierarchical' => $hierarchical,
@@ -266,20 +274,99 @@ class Hpcdd
             'parent' => $parentid
         );
 
-        $terms = get_categories($args);
-
-        return $terms;
+        return get_categories($args);
     }
 
     public function getCategorySlug($id)
     {
-        $cat_slug = get_term( $id, 'product_cat' );
 
-        return $cat_slug->slug;
+        if (is_int($id)) {
+            $cat_slug = get_term($id, 'product_cat');
+
+            return $cat_slug->slug;
+        } else {
+            return 0;
+            wp_die();
+        }
     }
 
     /**
-     * Run the loader to execute all of the hooks with WordPress.
+     * Get subcategories for second drop-down menu
+     */
+    function getLvl2()
+    {
+        $parent = $this->clean($_POST['lvl1']);
+
+        return $this->options($parent);
+    }
+
+    /**
+     * Get subcategories for third drop-down menu
+     */
+    function getLvl3()
+    {
+        $parent = $this->clean($_POST['lvl2']);
+
+        return $this->options($parent);
+
+    }
+
+    /**
+     * Get subcategories for fourth drop-down menu
+     */
+    function getLvl4()
+    {
+        $parent = $this->clean($_POST['lvl4']);
+
+        return $this->options($parent);
+    }
+
+    /**
+     * @param $parent
+     * @return int|void
+     */
+    public function options($parent)
+    {
+        sanitize_text_field($parent);
+
+        if (is_int($parent)) {
+            $show_count = 1;      // 1 for yes, 0 for no
+            $pad_counts = 1;      // 1 for yes, 0 for no
+            $hierarchical = 1;    // 1 for yes, 0 for no
+            $title = '';
+            $empty = 0;
+
+            $args = array(
+                'taxonomy' => 'product_cat',
+                'orderby' => 'name',
+                'show_count' => $show_count,
+                'pad_counts' => $pad_counts,
+                'hierarchical' => $hierarchical,
+                'title_li' => $title,
+                'hide_empty' => $empty,
+                'parent' => $parent
+            );
+
+            $terms = get_categories($args);
+
+            $option = '';
+
+            foreach ($terms as $child) {
+                $option .= '<option value="' . $child->term_id . '">';
+                $option .= $child->name . ' (' . $child->count . ')';
+                $option .= '</option>';
+            }
+
+            echo json_encode($option);
+
+        } else {
+            return 0;
+        }
+        wp_die();
+    }
+
+    /**
+     * Run the loader to execute all the hooks with WordPress.
      *
      * @since    1.0.0
      */
@@ -299,90 +386,4 @@ class Hpcdd
         return $this->loader;
     }
 
-}
-
-/**
- * Get subcategories for second drop-down menu
- */
-function getLvl2()
-{
-
-    $parent = $_POST['lvl1'];
-
-    list($option) = getOptions($parent);
-
-    echo json_encode($option);
-
-    wp_die();
-}
-
-/**
- * Get subcategories for third drop-down menu
- */
-function getLvl3()
-{
-
-    $parent = $_POST['lvl2'];
-
-    list($option) = getOptions($parent);
-
-    echo json_encode($option);
-
-    wp_die();
-}
-
-/**
- * Get subcategories for fourth drop-down menu
- */
-function getLvl4()
-{
-
-    $parent = $_POST['lvl3'];
-
-    list($option) = getOptions($parent);
-
-    echo json_encode($option);
-
-    wp_die();
-}
-
-/**
- * Global options used when fetching sub-categories
- *
- * @param $parent
- * @return array
- */
-function getOptions($parent): array
-{
-    $taxonomy = 'product_cat';
-    $orderby = 'name';
-    $show_count = 1;      // 1 for yes, 0 for no
-    $pad_counts = 1;      // 1 for yes, 0 for no
-    $hierarchical = 1;    // 1 for yes, 0 for no
-    $title = '';
-    $empty = 0;
-    $parentid = $parent;
-
-    $args = array(
-        'taxonomy' => $taxonomy,
-        'orderby' => $orderby,
-        'show_count' => $show_count,
-        'pad_counts' => $pad_counts,
-        'hierarchical' => $hierarchical,
-        'title_li' => $title,
-        'hide_empty' => $empty,
-        'parent' => $parentid
-    );
-
-    $terms = get_categories($args);
-
-    $option = '';
-
-    foreach ($terms as $child) {
-        $option .= '<option value="' . $child->term_id . '">';
-        $option .= $child->name . ' (' . $child->count . ')';
-        $option .= '</option>';
-    }
-
-    return array($option);
 }

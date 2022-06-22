@@ -1,10 +1,9 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://blacktiehost.com
-Tags: comments, spam
+Contributors: milenmk
+Tags: category dropdowns, dependent category selects, product categories, search by category, woocommerce categories
 Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+Tested up to: 6.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +27,8 @@ Max depth of categories: 3 (one main category and 3 sub-categories) i.e.
 --- Second subcategory
 ---- Third subcategory
 
+Use shortcode `[hpcdd_category_selector]` to display the dropdown selects on your website
+
 This plugin is inspired by the abandoned Product Category Dropdowns.
 
 
@@ -47,13 +48,19 @@ This plugin is inspired by the abandoned Product Category Dropdowns.
 2. Serch for "Hierarchy Product Category Drop Down"
 3. Click Install
 
+After plugin activation, use shortcode `[hpcdd_category_selector]` to display the dropdown selects on your website
+
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 - Released: Jun, 21 - 2022 =
 * Initial release
 
+== Translators ==
+
+= Available Languages =
+* English (Default)
+* Bulgarian
 
 == LINKS ==
 
-My website: http://blacktiehost.com
 For questions and Support: milen@blacktiehost.com
