@@ -4,6 +4,9 @@
 	function lvl2() {
 		$('#lvl1').change(function () {
 			var lvl1Val = $('#lvl1').val();
+			$('#lvl2 option:not(:first)').remove();
+			$('#lvl3 option:not(:first)').remove();
+			$('#lvl4 option:not(:first)').remove();
 
 			//console.log(lvl1Val);
 
@@ -30,6 +33,8 @@
 	function lvl3() {
 		$('#lvl2').change(function () {
 			var lvl2Val = $('#lvl2').val();
+			$('#lvl3 option:not(:first)').remove();
+			$('#lvl4 option:not(:first)').remove();
 
 			//console.log(lvl2Val);
 
@@ -56,6 +61,7 @@
 	function lvl4() {
 		$('#lvl3').change(function () {
 			var lvl3Val = $('#lvl3').val();
+			$('#lvl4 option:not(:first)').remove();
 
 			//console.log(lvl3Val);
 
