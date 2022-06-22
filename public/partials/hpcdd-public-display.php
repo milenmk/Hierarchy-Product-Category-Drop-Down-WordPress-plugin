@@ -13,7 +13,7 @@
  */
 ?>
     <div class="hpcdd-selector-box" id="hpcdd_widget">
-        <div class="block-content" id="hpcdd-form">
+        <div class="block-content">
 
             <form method="post">
 
@@ -56,9 +56,6 @@
                         <span><?php echo __('Show Products', 'hpcdd') ?></span>
                     </button>
                 </div>
-
-                <img id="loader" class="loader" src="<?php print plugins_url('/', __DIR__) . 'img/loader.gif' ?>"
-                     hidden/>
 
             </form>
 
