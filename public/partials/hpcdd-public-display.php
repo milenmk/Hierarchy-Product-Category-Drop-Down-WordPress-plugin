@@ -52,8 +52,8 @@
 
                 <div class="hpcdd-button">
                     <button type="submit" name="submit" title="<?php echo __('Show Products', 'hpcdd') ?>"
-                            class="button hpcdd-submit"/>
-                    <span><?php echo __('Show Products', 'hpcdd') ?></span>
+                            class="button hpcdd-submit">
+                        <span><?php echo __('Show Products', 'hpcdd') ?></span>
                     </button>
                 </div>
 
@@ -68,21 +68,31 @@ if (isset($_POST['submit'])) {
 
     $url = '';
 
-    if (isset($_POST['lvl1']) && !empty($_POST['lvl1'])) {
-        $cat1 = $this->getCategorySlug($_POST['lvl1']);
+    $tmp1 = $this->clean($_POST['lvl1']);
+    $tmp2 = $this->clean($_POST['lvl2']);
+    $tmp3 = $this->clean($_POST['lvl3']);
+    $tmp4 = $this->clean($_POST['lvl4']);
+
+    $tmp1 = sanitize_text_field($tmp1);
+    $tmp2 = sanitize_text_field($tmp2);
+    $tmp3 = sanitize_text_field($tmp3);
+    $tmp4 = sanitize_text_field($tmp4);
+
+    if (isset($tmp1) && !empty($tmp1)) {
+        $cat1 = $this->getCategorySlug($tmp1);
         $url .= '?product-category=' . $cat1;
     }
 
-    if (isset($_POST['lvl1']) && isset($_POST['lvl2']) && !empty($_POST['lvl1']) && !empty($_POST['lvl2'])) {
-        $cat2 = $this->getCategorySlug($_POST['lvl2']);
+    if (isset($tmp1) && isset($tmp2) && !empty($tmp1) && !empty($tmp2)) {
+        $cat2 = $this->getCategorySlug($tmp2);
         $url .= '&product-category=' . $cat2;
     }
 
-    if (isset($_POST['lvl3']) && !empty($_POST['lvl3'])) {
-        $cat3 = $this->getCategorySlug($_POST['lvl3']);
+    if (isset($tmp3) && !empty($tmp3)) {
+        $cat3 = $this->getCategorySlug($tmp3);
         $url .= '&product-category=' . $cat3;
     }
-    if (isset($_POST['lvl4']) && !empty($_POST['lvl4'])) {
+    if (isset($tmp4) && !empty($tmp4)) {
         $cat4 = $this->getCategorySlug($_POST['lvl4']);
         $url .= '&product-category=' . $cat4;
     }

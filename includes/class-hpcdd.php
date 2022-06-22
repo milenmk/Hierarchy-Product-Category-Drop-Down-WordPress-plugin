@@ -227,12 +227,9 @@ class Hpcdd
 
     public function show_selector_by_shortcode($atts)
     {
-
         ob_start();
 
         $this->toHtml();
-
-        //$contents = ob_get_clean();
 
         return ob_get_clean();
     }
@@ -243,7 +240,18 @@ class Hpcdd
     public function toHtml()
     {
         include_once plugin_dir_path(dirname(__FILE__)) . 'public/partials/hpcdd-public-display.php';
+    }
 
+    /**
+     * Clean data coming from the select, input etc. fields
+     *
+     * @param int $parent Data to be cleaned
+     */
+    public function clean($parent)
+    {
+        $parent = htmlspecialchars($parent);
+        $parent = stripslashes($parent);
+        return trim($parent);
     }
 
     /**
