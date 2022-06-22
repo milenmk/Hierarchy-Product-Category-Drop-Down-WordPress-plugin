@@ -60,6 +60,7 @@ class Hpcdd
 
     protected $_pluginUrl;
     protected $_pluginPath;
+    protected $_widgetId = '';
 
     /**
      * Define the core functionality of the plugin.
@@ -118,7 +119,7 @@ class Hpcdd
          * The class responsible for defining internationalization functionality
          * of the plugin.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-hpcdd-i18n.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-hpcdd-i18n.php';
 
         /**
          * The class responsible for defining all actions that occur in the admin area.
@@ -130,6 +131,11 @@ class Hpcdd
          * side of the site.
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-hpcdd-public.php';
+
+        /**
+         * File with functions used by the module
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/functions.php';
 
         $this->loader = new Hpcdd_Loader();
 
@@ -144,16 +150,17 @@ class Hpcdd
      * @since    1.0.0
      * @access   private
      */
-    private function set_locale() {
+    private function set_locale()
+    {
 
         $plugin_i18n = new Hpcdd_i18n();
 
-        $this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+        $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 
     }
 
     /**
-     * Register all the hooks related to the admin area functionality
+     * Register all of the hooks related to the admin area functionality
      * of the plugin.
      *
      * @since    1.0.0
@@ -193,7 +200,7 @@ class Hpcdd
     }
 
     /**
-     * Register all the hooks related to the public-facing functionality
+     * Register all of the hooks related to the public-facing functionality
      * of the plugin.
      *
      * @since    1.0.0
@@ -218,7 +225,7 @@ class Hpcdd
 
     }
 
-    public function show_selector_by_shortcode()
+    public function show_selector_by_shortcode($atts)
     {
 
         ob_start();
@@ -226,8 +233,6 @@ class Hpcdd
         $this->toHtml();
 
         //$contents = ob_get_clean();
-
-        //return $contents;
 
         return ob_get_clean();
     }
@@ -239,15 +244,6 @@ class Hpcdd
     {
         include_once plugin_dir_path(dirname(__FILE__)) . 'public/partials/hpcdd-public-display.php';
 
-    }
-
-    public function clean($data)
-    {
-        $data = htmlspecialchars($data);
-        $data = stripslashes($data);
-        $data = trim($data);
-
-        return $data;
     }
 
     /**
@@ -279,94 +275,13 @@ class Hpcdd
 
     public function getCategorySlug($id)
     {
+        $cat_slug = get_term($id, 'product_cat');
 
-        if (is_int($id)) {
-            $cat_slug = get_term($id, 'product_cat');
-
-            return $cat_slug->slug;
-        } else {
-            return 0;
-            wp_die();
-        }
+        return $cat_slug->slug;
     }
 
     /**
-     * Get subcategories for second drop-down menu
-     */
-    function getLvl2()
-    {
-        $parent = $this->clean($_POST['lvl1']);
-
-        return $this->options($parent);
-    }
-
-    /**
-     * Get subcategories for third drop-down menu
-     */
-    function getLvl3()
-    {
-        $parent = $this->clean($_POST['lvl2']);
-
-        return $this->options($parent);
-
-    }
-
-    /**
-     * Get subcategories for fourth drop-down menu
-     */
-    function getLvl4()
-    {
-        $parent = $this->clean($_POST['lvl4']);
-
-        return $this->options($parent);
-    }
-
-    /**
-     * @param $parent
-     * @return int|void
-     */
-    public function options($parent)
-    {
-        sanitize_text_field($parent);
-
-        if (is_int($parent)) {
-            $show_count = 1;      // 1 for yes, 0 for no
-            $pad_counts = 1;      // 1 for yes, 0 for no
-            $hierarchical = 1;    // 1 for yes, 0 for no
-            $title = '';
-            $empty = 0;
-
-            $args = array(
-                'taxonomy' => 'product_cat',
-                'orderby' => 'name',
-                'show_count' => $show_count,
-                'pad_counts' => $pad_counts,
-                'hierarchical' => $hierarchical,
-                'title_li' => $title,
-                'hide_empty' => $empty,
-                'parent' => $parent
-            );
-
-            $terms = get_categories($args);
-
-            $option = '';
-
-            foreach ($terms as $child) {
-                $option .= '<option value="' . $child->term_id . '">';
-                $option .= $child->name . ' (' . $child->count . ')';
-                $option .= '</option>';
-            }
-
-            echo json_encode($option);
-
-        } else {
-            return 0;
-        }
-        wp_die();
-    }
-
-    /**
-     * Run the loader to execute all the hooks with WordPress.
+     * Run the loader to execute all of the hooks with WordPress.
      *
      * @since    1.0.0
      */
@@ -387,3 +302,5 @@ class Hpcdd
     }
 
 }
+
+
