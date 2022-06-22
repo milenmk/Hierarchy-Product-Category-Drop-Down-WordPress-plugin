@@ -97,5 +97,5 @@ if (isset($_POST['submit'])) {
         $url .= '&product-category=' . $cat4;
     }
 
-    header('Location: ' . get_option('siteurl') . '/shop/' . $url . '');
+    header('Location: ' . get_option('siteurl') . '/shop/' . esc_html($url) . '');
 }
