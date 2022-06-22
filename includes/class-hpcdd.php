@@ -222,45 +222,7 @@ class Hpcdd
         add_action('wp_ajax_nopriv_getLvl4', 'getLvl4');
 
         add_shortcode('hpcdd_category_selector', array($this, 'show_selector_by_shortcode'));
-        add_shortcode('hpcdd_category_selector_mobile', array($this, 'show_selector_by_shortcode_mobile'));
 
-        add_action('init', array($this, 'hpcdd_shortcodes_init'));
-
-    }
-
-    /**
-     * Central location to create all shortcodes.
-     */
-    public function hpcdd_shortcodes_init()
-    {
-        add_shortcode('hpcdd_show_selector', array($this, 'hpcdd_shortcode'));
-    }
-
-    public function hpcdd_shortcode($atts = [])
-    {
-        // normalize attribute keys, lowercase
-        $atts = array_change_key_case((array)$atts, CASE_LOWER);
-
-        // override default attributes with user attributes
-        $hpcdd_atts = shortcode_atts(
-            array(
-                'name' => 'hpcddtest',
-                'id' => '',
-            ), $atts
-        );
-
-        return $this->getContent($hpcdd_atts['name'], $hpcdd_atts['id']);
-    }
-
-    public function getContent($name, $id)
-    {
-        $this->setWidgetId($name . '_' . $id);
-
-        ob_start();
-
-        $this->toHtml();
-
-        return ob_get_clean();
     }
 
     public function getWidgetId()
@@ -284,31 +246,12 @@ class Hpcdd
         return ob_get_clean();
     }
 
-    public function show_selector_by_shortcode_mobile()
-    {
-        $this->setWidgetId(rand(1, 99999));
-
-        ob_start();
-
-        $this->toHtmlMobile();
-
-        return ob_get_clean();
-    }
-
     /**
      *
      */
     public function toHtml()
     {
-        include_once plugin_dir_path(dirname(__FILE__)) . 'public/partials/hpcdd-public-display.php';
-    }
-
-    /**
-     *
-     */
-    public function toHtmlMobile()
-    {
-        include_once plugin_dir_path(dirname(__FILE__)) . 'public/partials/hpcdd-public-display.php';
+        include plugin_dir_path(dirname(__FILE__)) . 'public/partials/hpcdd-public-display.php';
     }
 
     /**
