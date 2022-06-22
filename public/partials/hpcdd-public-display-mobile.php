@@ -13,7 +13,7 @@
  */
 
 ?>
-    <div class="hpcdd-selector-box" id="<?php echo $this->getWidgetId(); ?>">
+    <div class="hpcdd-selector-box" id="hpcdd_<?php echo $this->getWidgetId(); ?>">
         <div class="block-content" id="hpcdd-form">
 
             <form method="post">
