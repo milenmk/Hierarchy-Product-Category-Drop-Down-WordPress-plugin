@@ -8,7 +8,11 @@
 			$('#lvl3 option:not(:first)').remove();
 			$('#lvl4 option:not(:first)').remove();
 
+			document.getElementById("hpcdd-form").setAttribute("style", "opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50)");
+
 			//console.log(lvl1Val);
+
+			$("#loader").show();
 
 			$.ajax({
 				url: "/wp-admin/admin-ajax.php",
@@ -20,6 +24,8 @@
 				dataType: 'json',
 				success: function (data) {
 					$('#lvl2').append(data);
+					$("#loader").hide();
+					document.getElementById("hpcdd-form").setAttribute("style", "opacity:none; -moz-opacity: none;");
 					//console.log(data[0]);
 				},
 				error: function (errorThrown) {
@@ -36,7 +42,11 @@
 			$('#lvl3 option:not(:first)').remove();
 			$('#lvl4 option:not(:first)').remove();
 
+			document.getElementById("hpcdd-form").setAttribute("style", "opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50)");
+
 			//console.log(lvl2Val);
+
+			$("#loader").show();
 
 			$.ajax({
 				url: "/wp-admin/admin-ajax.php",
@@ -48,6 +58,8 @@
 				dataType: 'json',
 				success: function (data) {
 					$('#lvl3').append(data);
+					$("#loader").hide();
+					document.getElementById("hpcdd-form").setAttribute("style", "opacity:none; -moz-opacity: none;");
 					//console.log(data[0]);
 				},
 				error: function (errorThrown) {
@@ -63,7 +75,11 @@
 			var lvl3Val = $('#lvl3').val();
 			$('#lvl4 option:not(:first)').remove();
 
+			document.getElementById("hpcdd-form").setAttribute("style", "opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50)");
+
 			//console.log(lvl3Val);
+
+			$("#loader").show();
 
 			$.ajax({
 				url: "/wp-admin/admin-ajax.php",
@@ -75,6 +91,8 @@
 				dataType: 'json',
 				success: function (data) {
 					$('#lvl4').append(data);
+					$("#loader").hide();
+					document.getElementById("hpcdd-form").setAttribute("style", "opacity:none; -moz-opacity: none;");
 					//console.log(data[0]);
 				},
 				error: function (errorThrown) {

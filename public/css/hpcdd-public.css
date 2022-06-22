@@ -3,4 +3,23 @@
  * included in this file.
  */
 
-.hpcdd-selector-box select.hpcdd-select {width:100%; margin:0 0 8px 0; color: #575757; font-size: 16px;}
+.form {
+    position: relative;
+}
+
+img.loader {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+}
+
+.hpcdd-selector-box select.hpcdd-select {
+    width: 100%;
+    margin: 0 0 8px 0;
+    color: #575757;
+    font-size: 16px;
+}
