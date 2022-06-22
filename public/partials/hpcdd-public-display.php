@@ -82,23 +82,18 @@ if (isset($_POST['submit'])) {
     $tmp3 = sanitize_text_field($tmp3);
     $tmp4 = sanitize_text_field($tmp4);
 
-    if (isset($tmp1) && !empty($tmp1)) {
-        $cat1 = $this->getCategorySlug($tmp1);
-        $url .= '?product-category=' . $cat1;
-    }
-
-    if (isset($tmp1) && isset($tmp2) && !empty($tmp1) && !empty($tmp2)) {
-        $cat2 = $this->getCategorySlug($tmp2);
-        $url .= '&product-category=' . $cat2;
-    }
-
-    if (isset($tmp3) && !empty($tmp3)) {
-        $cat3 = $this->getCategorySlug($tmp3);
-        $url .= '&product-category=' . $cat3;
-    }
     if (isset($tmp4) && !empty($tmp4)) {
         $cat4 = $this->getCategorySlug($_POST['lvl4']);
-        $url .= '&product-category=' . $cat4;
+        $url .= '?product-category=' . $cat4;
+    } elseif (isset($tmp3) && !empty($tmp3)) {
+        $cat3 = $this->getCategorySlug($tmp3);
+        $url .= '?product-category=' . $cat3;
+    } elseif (isset($tmp2) && !empty($tmp2)) {
+        $cat2 = $this->getCategorySlug($tmp2);
+        $url .= '?product-category=' . $cat2;
+    } elseif (isset($tmp1) && !empty($tmp1)) {
+        $cat1 = $this->getCategorySlug($tmp1);
+        $url .= '?product-category=' . $cat1;
     }
 
     header('Location: ' . get_option('siteurl') . '/shop/' . esc_html($url) . '');
