@@ -124,7 +124,6 @@ class Hpcdd_Admin
     {
 
         $tab = Hpcdd()->cleanPostStringVal($_GET['tab']);
-
         // set this var to be used in the settings-display view
         $active_tab = $tab ?? 'general';
         if (isset($_GET['error_message'])) {
