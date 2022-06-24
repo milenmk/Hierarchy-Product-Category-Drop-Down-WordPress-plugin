@@ -122,8 +122,11 @@ class Hpcdd_Admin
 
     public function displayPluginAdminSettings()
     {
+
+        $tab = Hpcdd()->cleanPostStringVal($_GET['tab']);
+
         // set this var to be used in the settings-display view
-        $active_tab = $_GET['tab'] ?? 'general';
+        $active_tab = $tab ?? 'general';
         if (isset($_GET['error_message'])) {
             add_action('admin_notices', array($this, 'hpcddSettingsMessages'));
             do_action('admin_notices', $_GET['error_message']);
