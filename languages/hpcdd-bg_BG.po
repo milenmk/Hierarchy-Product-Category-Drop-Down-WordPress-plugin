@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2022-06-21T15:22:55+03:00\n"
-"PO-Revision-Date: 2022-06-21 12:26+0000\n"
+"PO-Revision-Date: 2022-06-22 10:01+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: hpcdd\n"
 "Language: bg_BG\n"
@@ -62,19 +62,19 @@ msgstr "Тези настройки покриват всички HPCDD опци
 
 #: public/partials/hpcdd-public-display.php:22
 msgid "Select Main Category"
-msgstr "Изберете основната категория"
+msgstr "Изберете марка"
 
 #: public/partials/hpcdd-public-display.php:33
 msgid "Select First Subcategory"
-msgstr "Изберете първата под-категория"
+msgstr "Изберете модел"
 
 #: public/partials/hpcdd-public-display.php:39
 msgid "Select Second Subcategory"
-msgstr "Изберете втората под-категория"
+msgstr "Изберете модификация"
 
 #: public/partials/hpcdd-public-display.php:45
 msgid "Select Third Subcategory"
-msgstr "Изберете третата под-категория"
+msgstr "Изберете година"
 
 #: public/partials/hpcdd-public-display.php:53
 #: public/partials/hpcdd-public-display.php:55

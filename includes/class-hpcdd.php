@@ -283,11 +283,13 @@ class Hpcdd
      *
      * @param int $parent Data to be cleaned
      */
-    public function clean($parent)
+    public function cleanPostStringVal($parent)
     {
+        $parent = strval($parent);
         $parent = htmlspecialchars($parent);
         $parent = stripslashes($parent);
-        return trim($parent);
+        $parent = filter_var($parent, FILTER_SANITIZE_STRING);
+        return sanitize_text_field($parent);
     }
 
     /**
@@ -319,7 +321,9 @@ class Hpcdd
 
     public function getCategorySlug($id)
     {
-        $cat_slug = get_term($id, 'product_cat');
+        $tmp = cleanPostIntVal($id);
+
+        $cat_slug = get_term($tmp, 'product_cat');
 
         return $cat_slug->slug;
     }

@@ -72,15 +72,10 @@ if (isset($_POST['submit'])) {
 
     $url = '';
 
-    $tmp1 = $this->clean($_POST['lvl1']);
-    $tmp2 = $this->clean($_POST['lvl2']);
-    $tmp3 = $this->clean($_POST['lvl3']);
-    $tmp4 = $this->clean($_POST['lvl4']);
-
-    $tmp1 = sanitize_text_field($tmp1);
-    $tmp2 = sanitize_text_field($tmp2);
-    $tmp3 = sanitize_text_field($tmp3);
-    $tmp4 = sanitize_text_field($tmp4);
+    $tmp1 = $this->cleanPostStringVal($_POST['lvl1']);
+    $tmp2 = $this->cleanPostStringVal($_POST['lvl2']);
+    $tmp3 = $this->cleanPostStringVal($_POST['lvl3']);
+    $tmp4 = $this->cleanPostStringVal($_POST['lvl4']);
 
     if (isset($tmp4) && !empty($tmp4)) {
         $cat4 = $this->getCategorySlug($_POST['lvl4']);

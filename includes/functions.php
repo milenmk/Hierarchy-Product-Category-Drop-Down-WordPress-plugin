@@ -15,9 +15,7 @@
  */
 function getLvl2()
 {
-    $parent = $_POST['lvl1'];
-
-    $parent = clean($parent);
+    $parent = cleanPostIntVal($_POST['lvl1']);
 
     sanitize_text_field($parent);
 
@@ -29,9 +27,7 @@ function getLvl2()
  */
 function getLvl3()
 {
-    $parent = $_POST['lvl2'];
-
-    $parent = clean($parent);
+    $parent = cleanPostIntVal($_POST['lvl2']);
 
     sanitize_text_field($parent);
 
@@ -43,9 +39,7 @@ function getLvl3()
  */
 function getLvl4()
 {
-    $parent = $_POST['lvl3'];
-
-    $parent = clean($parent);
+    $parent = cleanPostIntVal($_POST['lvl3']);
 
     sanitize_text_field($parent);
 
@@ -53,15 +47,15 @@ function getLvl4()
 }
 
 /**
- * Clean data coming from the select, input etc. fields
+ * Clean integer data coming from the select, input etc. fields
  *
  * @param int $parent Data to be cleaned
  */
-function clean($parent)
+function cleanPostIntVal($parent)
 {
-    $parent = htmlspecialchars($parent);
-    $parent = stripslashes($parent);
-    return trim($parent);
+    $parent = intval($parent);
+    $parent = trim($parent);
+    return filter_var($parent, FILTER_SANITIZE_NUMBER_INT);
 }
 
 /**
