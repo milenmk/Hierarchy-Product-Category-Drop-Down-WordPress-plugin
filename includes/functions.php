@@ -22,7 +22,8 @@ function getLvl2()
     if (is_int($parent) && !empty($parent)) {
         options($parent);
     } else {
-        return '';
+        echo '';
+        wp_die();
     }
 }
 
@@ -38,7 +39,8 @@ function getLvl3()
     if (is_int($parent) && !empty($parent)) {
         options($parent);
     } else {
-        return '';
+        echo '';
+        wp_die();
     }
 }
 
@@ -54,7 +56,8 @@ function getLvl4()
     if (is_int($parent) && !empty($parent)) {
         options($parent);
     } else {
-        return '';
+        echo '';
+        wp_die();
     }
 }
 
