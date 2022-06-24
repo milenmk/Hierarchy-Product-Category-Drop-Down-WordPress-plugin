@@ -19,7 +19,11 @@ function getLvl2()
 
     sanitize_text_field($parent);
 
-    options($parent);
+    if (is_int($parent) && !empty($parent)) {
+        options($parent);
+    } else {
+        return '';
+    }
 }
 
 /**
@@ -31,7 +35,11 @@ function getLvl3()
 
     sanitize_text_field($parent);
 
-    options($parent);
+    if (is_int($parent) && !empty($parent)) {
+        options($parent);
+    } else {
+        return '';
+    }
 }
 
 /**
@@ -43,7 +51,11 @@ function getLvl4()
 
     sanitize_text_field($parent);
 
-    options($parent);
+    if (is_int($parent) && !empty($parent)) {
+        options($parent);
+    } else {
+        return '';
+    }
 }
 
 /**
