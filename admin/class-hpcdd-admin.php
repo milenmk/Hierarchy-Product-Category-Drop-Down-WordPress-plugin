@@ -122,8 +122,7 @@ class Hpcdd_Admin
 
     public function displayPluginAdminSettings()
     {
-
-        $tab = Hpcdd()->cleanPostStringVal($_GET['tab']);
+        $tab = sanitize_text_field($_GET['tab']);
         // set this var to be used in the settings-display view
         $active_tab = $tab ?? 'general';
         if (isset($_GET['error_message'])) {
@@ -235,9 +234,9 @@ class Hpcdd_Admin
                     $max = (isset($args['max'])) ? 'max="' . $args['max'] . '"' : '';
                     if (isset($args['disabled'])) {
                         // hide the actual input bc if it was just a disabled input the info saved in the database would be wrong - bc it would pass empty values and wipe the actual information
-                        echo esc_html($prependStart) . '<input type="' . esc_attr($args['subtype']) . '" id="' . esc_attr($args['id']) . '_disabled" ' . esc_attr($step) . ' ' . esc_attr($max) . ' ' . esc_attr($min) . ' name="' . esc_attr($args['name']) . '_disabled" size="40" disabled value="' . esc_attr($value) . '" /><input type="hidden" id="' . $args['id'] . '" ' . $step . ' ' . $max . ' ' . $min . ' name="' . $args['name'] . '" size="40" value="' . esc_attr($value) . '" />' . esc_html($prependEnd);
+                        echo $prependStart . '<input type="' . esc_attr($args['subtype']) . '" id="' . esc_attr($args['id']) . '_disabled" ' . esc_attr($step) . ' ' . esc_attr($max) . ' ' . esc_attr($min) . ' name="' . esc_attr($args['name']) . '_disabled" size="40" disabled value="' . esc_attr($value) . '" /><input type="hidden" id="' . $args['id'] . '" ' . $step . ' ' . $max . ' ' . $min . ' name="' . $args['name'] . '" size="40" value="' . esc_attr($value) . '" />' . $prependEnd;
                     } else {
-                        echo esc_html($prependStart) . '<input type="' . esc_attr($args['subtype']) . '" id="' . esc_attr($args['id']) . '" "' . esc_attr($args['required']) . '" ' . esc_attr($step) . ' ' . esc_attr($max) . ' ' . esc_attr($min) . ' name="' . esc_attr($args['name']) . '" size="40" value="' . esc_attr($value) . '" />' . esc_html($prependEnd);
+                        echo $prependStart . '<input type="' . esc_attr($args['subtype']) . '" id="' . esc_attr($args['id']) . '" "' . esc_attr($args['required']) . '" ' . esc_attr($step) . ' ' . esc_attr($max) . ' ' . esc_attr($min) . ' name="' . esc_attr($args['name']) . '" size="40" value="' . esc_attr($value) . '" />' . $prependEnd;
                     }
                 } else {
                     $checked = ($value) ? 'checked' : '';

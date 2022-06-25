@@ -19,7 +19,7 @@ function getLvl2()
 
     sanitize_text_field($parent);
 
-    if (is_int($parent) && !empty($parent)) {
+    if (!empty($parent)) {
         options($parent);
     } else {
         echo '';
@@ -36,7 +36,7 @@ function getLvl3()
 
     sanitize_text_field($parent);
 
-    if (is_int($parent) && !empty($parent)) {
+    if (!empty($parent)) {
         options($parent);
     } else {
         echo '';
@@ -53,7 +53,7 @@ function getLvl4()
 
     sanitize_text_field($parent);
 
-    if (is_int($parent) && !empty($parent)) {
+    if (!empty($parent)) {
         options($parent);
     } else {
         echo '';
@@ -71,6 +71,7 @@ function cleanPostIntVal($parent)
     $parent = intval($parent);
     $parent = trim($parent);
     return filter_var($parent, FILTER_SANITIZE_NUMBER_INT);
+    //return $parent;
 }
 
 /**

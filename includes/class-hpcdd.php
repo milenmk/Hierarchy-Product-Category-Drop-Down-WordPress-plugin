@@ -285,7 +285,7 @@ class Hpcdd
      */
     public function cleanPostStringVal($parent)
     {
-        $parent = strval($parent);
+        //$parent = strval($parent);
         $parent = htmlspecialchars($parent);
         $parent = stripslashes($parent);
         $parent = filter_var($parent, FILTER_SANITIZE_STRING);
