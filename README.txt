@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: milenmk
 Tags: category dropdowns, dependent category selects, product categories, search by category, woocommerce categories
-Requires at least: 3.0.1
+Requires at least: 3.4
 Tested up to: 6.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
