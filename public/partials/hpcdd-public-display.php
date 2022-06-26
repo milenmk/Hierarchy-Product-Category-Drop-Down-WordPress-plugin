@@ -11,7 +11,6 @@
  * @package    Hpcdd
  * @subpackage Hpcdd/public/partials
  */
-
 ?>
     <div class="hpcdd-selector-box" id="<?php echo $this->getWidgetId(); ?>">
         <div class="block-content hpcdd-form">
@@ -52,7 +51,8 @@
                 <?php } ?>
 
                 <div class="hpcdd-button">
-                    <button type="submit" name="submit" title="<?php echo __('Show Products', 'hpcdd') ?>"
+                    <button type="submit" name="submit_<?php echo $this->getWidgetId(); ?>"
+                            title="<?php echo __('Show Products', 'hpcdd') ?>"
                             class="button hpcdd-submit">
                         <span><?php echo __('Show Products', 'hpcdd') ?></span>
                     </button>
@@ -68,7 +68,7 @@
 
 <?php
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit_' . $this->getWidgetId()])) {
 
     $url = '';
 
@@ -77,19 +77,46 @@ if (isset($_POST['submit'])) {
     $tmp3 = $this->cleanPostStringVal($_POST['lvl3']);
     $tmp4 = $this->cleanPostStringVal($_POST['lvl4']);
 
-    if (isset($tmp4) && !empty($tmp4)) {
-        $cat4 = $this->getCategorySlug($_POST['lvl4']);
-        $url .= '?product-category=' . $cat4;
-    } elseif (isset($tmp3) && !empty($tmp3)) {
-        $cat3 = $this->getCategorySlug($tmp3);
-        $url .= '?product-category=' . $cat3;
-    } elseif (isset($tmp2) && !empty($tmp2)) {
-        $cat2 = $this->getCategorySlug($tmp2);
-        $url .= '?product-category=' . $cat2;
-    } elseif (isset($tmp1) && !empty($tmp1)) {
-        $cat1 = $this->getCategorySlug($tmp1);
-        $url .= '?product-category=' . $cat1;
+    $taxonomy = get_option('hpcdd_taxonomy_setting');
+
+    if ($taxonomy == "product_cat") {
+        $perma = get_option('woocommerce_permalinks');
+
+        if (isset($tmp4) && !empty($tmp4)) {
+            $cat4 = $this->getCategorySlug($_POST['lvl4']);
+            $url .= '?' . $perma['category_base'] . '=' . $cat4;
+        } elseif (isset($tmp3) && !empty($tmp3)) {
+            $cat3 = $this->getCategorySlug($tmp3);
+            $url .= '?' . $perma['category_base'] . '=' . $cat3;
+        } elseif (isset($tmp2) && !empty($tmp2)) {
+            $cat2 = $this->getCategorySlug($tmp2);
+            $url .= '?' . $perma['category_base'] . '=' . $cat2;
+        } elseif (isset($tmp1) && !empty($tmp1)) {
+            $cat1 = $this->getCategorySlug($tmp1);
+            $url .= '?' . $perma['category_base'] . '=' . $cat1;
+        }
+
+        $link = get_permalink(wc_get_page_id('shop')) . '' . esc_html($url);
+        wp_redirect($link);
+        exit();
+    } else {
+        if (isset($tmp4) && !empty($tmp4)) {
+            $cat4 = $this->getCategorySlug($_POST['lvl4']);
+            $url .= $taxonomy . '/' . $cat4;
+        } elseif (isset($tmp3) && !empty($tmp3)) {
+            $cat3 = $this->getCategorySlug($tmp3);
+            $url .= $taxonomy . '/' . $cat3;
+        } elseif (isset($tmp2) && !empty($tmp2)) {
+            $cat2 = $this->getCategorySlug($tmp2);
+            $url .= $taxonomy . '/' . $cat2;
+        } elseif (isset($tmp1) && !empty($tmp1)) {
+            $cat1 = $this->getCategorySlug($tmp1);
+            $url .= $taxonomy . '/' . $cat1;
+        }
+
+        $link = get_home_url() . '/' . esc_html($url);
+        wp_redirect($link);
+        exit();
     }
 
-    header('Location: ' . get_option('siteurl') . '/shop/' . esc_html($url) . '');
 }

@@ -88,7 +88,7 @@ function options(string $parent)
     $empty = 0;
 
     $args = array(
-        'taxonomy' => 'product_cat',
+        'taxonomy' => get_option('hpcdd_taxonomy_setting'),
         'orderby' => 'name',
         'show_count' => $show_count,
         'pad_counts' => $pad_counts,

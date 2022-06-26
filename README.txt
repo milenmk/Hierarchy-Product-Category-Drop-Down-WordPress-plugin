@@ -3,7 +3,7 @@ Contributors: milenmk
 Tags: category dropdowns, dependent category selects, product categories, search by category, woocommerce categories
 Requires at least: 3.4
 Tested up to: 6.0
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,9 +48,18 @@ This plugin is inspired by the abandoned Product Category Dropdowns.
 2. Search for "Hierarchy Product Category Drop Down"
 3. Click Install
 
-After plugin activation, use shortcode `[hpcdd_category_selector]` to display the dropdown selects on your website
+After plugin activation, use shortcode `[hpcdd_show_selectorr]` to display the dropdown selects on your website
 
 == Changelog ==
+
+= 1.1.0 - Released: Jun, 26 - 2022 =
+* added parameters to shortcode
+* can set number of dropdown selects with shortcode parameter
+* can set the taxonomy with shortcode parameter
+* FIX: search not working on some WordPress themes
+
+= 1.0.1 - Released: Jun, 24 - 2022 =
+* minor bug fixes
 
 = 1.0.0 - Released: Jun, 21 - 2022 =
 * Initial release
@@ -62,5 +71,7 @@ After plugin activation, use shortcode `[hpcdd_category_selector]` to display th
 * Bulgarian
 
 == LINKS ==
+
+[DEMO](https://hpcdd.blacktiehost.com/)
 
 For questions and Support: milen@blacktiehost.com

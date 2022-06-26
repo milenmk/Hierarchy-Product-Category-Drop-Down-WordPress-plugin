@@ -221,6 +221,10 @@ class Hpcdd
         add_action('wp_ajax_getLvl4', 'getLvl4');
         add_action('wp_ajax_nopriv_getLvl4', 'getLvl4');
 
+        add_filter('template_redirect', function () {
+            ob_start(null, 0, 0);
+        });
+
         add_action('init', array($this, 'hpcdd_shortcodes_init'));
 
     }
@@ -243,7 +247,13 @@ class Hpcdd
         add_shortcode('hpcdd_show_selector', array($this, 'hpcdd_shortcode'));
     }
 
-    public function hpcdd_shortcode($atts = [])
+    /**
+     * Shortcode for displaying the selector.
+     *
+     * @param array $atts
+     * @return string
+     */
+    public function hpcdd_shortcode($atts)
     {
         // normalize attribute keys, lowercase
         $atts = array_change_key_case((array)$atts, CASE_LOWER);
@@ -251,23 +261,32 @@ class Hpcdd
         // override default attributes with user attributes
         $hpcdd_atts = shortcode_atts(
             array(
-                'name' => 'hpcddtest',
-                'id' => '',
+                'hpname' => 'hpcdd',
+                'hplevels' => '',
+                'hptaxonomy' => 'product_cat',
             ), $atts
         );
 
-        return $this->getContent($hpcdd_atts['name'], $hpcdd_atts['id']);
-    }
+        $this->setWidgetId($hpcdd_atts['hpname']);
 
-    public function getContent($name, $id)
-    {
-        $this->setWidgetId($name . '_' . $id);
+        if (!empty($hpcdd_atts['hplevels'])) {
+            update_option('hpcdd_levels_setting', $hpcdd_atts['hplevels']);
+        }
+
+        if (!empty($hpcdd_atts['hptaxonomy'])) {
+            register_setting(
+                'hpcdd_general_settings',
+                'hpcdd_taxonomy_setting'
+            );
+            update_option('hpcdd_taxonomy_setting', $hpcdd_atts['hptaxonomy'], 'yes');
+        }
 
         ob_start();
 
         $this->toHtml();
 
         return ob_get_clean();
+
     }
 
     /**
@@ -306,7 +325,7 @@ class Hpcdd
         $parentid = 0;
 
         $args = array(
-            'taxonomy' => 'product_cat',
+            'taxonomy' => get_option('hpcdd_taxonomy_setting'),
             'orderby' => 'name',
             'show_count' => $show_count,
             'pad_counts' => $pad_counts,
@@ -323,7 +342,7 @@ class Hpcdd
     {
         $tmp = cleanPostIntVal($id);
 
-        $cat_slug = get_term($tmp, 'product_cat');
+        $cat_slug = get_term($tmp, get_option('hpcdd_taxonomy_setting'));
 
         return $cat_slug->slug;
     }
