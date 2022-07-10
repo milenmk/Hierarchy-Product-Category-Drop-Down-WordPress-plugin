@@ -16,7 +16,7 @@
  * Plugin Name:       Hierarchy Product Category Drop Down
  * Plugin URI:        https://wordpress.org/plugins/hpcdd/
  * Description:       Show hierarchy dropdown to search woocommerce products per category.
- * Version:           1.4.1
+ * Version:           1.2.0
  * Author:            Milen Karaganski
  * Author URI:        https://bg.blacktiehost.com
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('HPCDD_VERSION', '1.4.1');
+define('HPCDD_VERSION', '1.2.0');
 
 /**
  * The code that runs during plugin activation.
@@ -63,15 +63,6 @@ register_deactivation_hook( __FILE__, 'deactivate_hpcdd' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-hpcdd.php';
-
-/**
- * Load translations.
- */
-add_action( 'init', 'hpcdd_load_textdomain' );
-
-function hpcdd_load_textdomain() {
-	load_plugin_textdomain( 'hpcdd', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-}
 
 /**
  * Begins execution of the plugin.
