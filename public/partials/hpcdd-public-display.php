@@ -82,33 +82,33 @@ if (isset($_POST['submit_' . $this->getWidgetId()])) {
     if ($taxonomy == "product_cat") {
         $perma = get_option('woocommerce_permalinks');
 
-        if (isset($tmp4) && !empty($tmp4)) {
-            $url = get_category_link( $tmp4 );
-        } elseif (isset($tmp3) && !empty($tmp3)) {
-	        $url = get_category_link( $tmp3 );
-        } elseif (isset($tmp2) && !empty($tmp2)) {
-	        $url = get_category_link( $tmp2 );
-        } elseif (isset($tmp1) && !empty($tmp1)) {
-	        $url = get_category_link( $tmp1 );
-        }
+	    if ( isset( $tmp4 ) && ! empty( $tmp4 ) ) {
+		    $url = get_category_link( $tmp4 );
+	    } elseif ( isset( $tmp3 ) && ! empty( $tmp3 ) ) {
+		    $url = get_category_link( $tmp3 );
+	    } elseif ( isset( $tmp2 ) && ! empty( $tmp2 ) ) {
+		    $url = get_category_link( $tmp2 );
+	    } elseif ( isset( $tmp1 ) && ! empty( $tmp1 ) ) {
+		    $url = get_category_link( $tmp1 );
+	    }
 
 	    $link = esc_html( $url );
 	    wp_redirect( $link );
-        exit();
+	    exit();
     } else {
-        if (isset($tmp4) && !empty($tmp4)) {
-	        $url = get_term_link( (int) $tmp4 );
-        } elseif (isset($tmp3) && !empty($tmp3)) {
-	        $url = get_term_link( (int) $tmp3 );
-        } elseif (isset($tmp2) && !empty($tmp2)) {
-	        $url = get_term_link( (int) $tmp2 );
-        } elseif (isset($tmp1) && !empty($tmp1)) {
-	        $url = get_term_link( (int) $tmp1 );
-        }
+	    if ( isset( $tmp4 ) && ! empty( $tmp4 ) ) {
+		    $url = get_term_link( (int) $tmp4 );
+	    } elseif ( isset( $tmp3 ) && ! empty( $tmp3 ) ) {
+		    $url = get_term_link( (int) $tmp3 );
+	    } elseif ( isset( $tmp2 ) && ! empty( $tmp2 ) ) {
+		    $url = get_term_link( (int) $tmp2 );
+	    } elseif ( isset( $tmp1 ) && ! empty( $tmp1 ) ) {
+		    $url = get_term_link( (int) $tmp1 );
+	    }
 
 	    $link = esc_html( $url );
 	    wp_redirect( $link );
-        exit();
+	    exit();
     }
 
 }
