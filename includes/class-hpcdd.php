@@ -338,14 +338,6 @@ class Hpcdd
         return get_categories($args);
     }
 
-    public function getCategorySlug($id)
-    {
-        $tmp = cleanPostIntVal($id);
-
-        $cat_slug = get_term($tmp, get_option('hpcdd_taxonomy_setting'));
-
-        return $cat_slug->slug;
-    }
 
     /**
      * Run the loader to execute all of the hooks with WordPress.

@@ -83,39 +83,31 @@ if (isset($_POST['submit_' . $this->getWidgetId()])) {
         $perma = get_option('woocommerce_permalinks');
 
         if (isset($tmp4) && !empty($tmp4)) {
-            $cat4 = $this->getCategorySlug($_POST['lvl4']);
-            $url .= '?' . $perma['category_base'] . '=' . $cat4;
+            $url = get_category_link( $tmp4 );
         } elseif (isset($tmp3) && !empty($tmp3)) {
-            $cat3 = $this->getCategorySlug($tmp3);
-            $url .= '?' . $perma['category_base'] . '=' . $cat3;
+	        $url = get_category_link( $tmp3 );
         } elseif (isset($tmp2) && !empty($tmp2)) {
-            $cat2 = $this->getCategorySlug($tmp2);
-            $url .= '?' . $perma['category_base'] . '=' . $cat2;
+	        $url = get_category_link( $tmp2 );
         } elseif (isset($tmp1) && !empty($tmp1)) {
-            $cat1 = $this->getCategorySlug($tmp1);
-            $url .= '?' . $perma['category_base'] . '=' . $cat1;
+	        $url = get_category_link( $tmp1 );
         }
 
-        $link = get_permalink(wc_get_page_id('shop')) . '' . esc_html($url);
-        wp_redirect($link);
+	    $link = esc_html( $url );
+	    wp_redirect( $link );
         exit();
     } else {
         if (isset($tmp4) && !empty($tmp4)) {
-            $cat4 = $this->getCategorySlug($_POST['lvl4']);
-            $url .= $taxonomy . '/' . $cat4;
+	        $url = get_term_link( (int) $tmp4 );
         } elseif (isset($tmp3) && !empty($tmp3)) {
-            $cat3 = $this->getCategorySlug($tmp3);
-            $url .= $taxonomy . '/' . $cat3;
+	        $url = get_term_link( (int) $tmp3 );
         } elseif (isset($tmp2) && !empty($tmp2)) {
-            $cat2 = $this->getCategorySlug($tmp2);
-            $url .= $taxonomy . '/' . $cat2;
+	        $url = get_term_link( (int) $tmp2 );
         } elseif (isset($tmp1) && !empty($tmp1)) {
-            $cat1 = $this->getCategorySlug($tmp1);
-            $url .= $taxonomy . '/' . $cat1;
+	        $url = get_term_link( (int) $tmp1 );
         }
 
-        $link = get_home_url() . '/' . esc_html($url);
-        wp_redirect($link);
+	    $link = esc_html( $url );
+	    wp_redirect( $link );
         exit();
     }
 
