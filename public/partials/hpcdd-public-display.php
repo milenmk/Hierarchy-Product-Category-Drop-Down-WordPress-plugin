@@ -11,6 +11,7 @@
  * @package    Hpcdd
  * @subpackage Hpcdd/public/partials
  */
+
 ?>
     <div class="hpcdd-selector-box" id="<?php echo $this->getWidgetId(); ?>">
         <div class="block-content hpcdd-form">
@@ -22,7 +23,11 @@
                         <option value=""><?php echo __('Select Main Category', 'hpcdd') ?></option>
                         <?php
                         foreach ($this->getTopLevelCategories() as $category) {
-                            print '<option value="' . $category->term_id . '">' . $category->name . ' (' . $category->count . ')</option>';
+	                        if ( get_option( 'hpcdd_shownumprod_setting' ) == 1 ) {
+		                        print '<option value="' . $category->term_id . '">' . $category->name . ' (' . $category->count . ')</option>';
+	                        } else {
+		                        print '<option value="' . $category->term_id . '">' . $category->name . '</option>';
+	                        }
                         }
                         ?>
                     </select>

@@ -5,12 +5,12 @@ msgstr ""
 "Project-Id-Version: Hierarchy Product Category Drop Down 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hpcdd\n"
 "Last-Translator: RoadRangerBG\n"
-"Language-Team: Български\n"
+"Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2022-06-21T15:22:55+03:00\n"
-"PO-Revision-Date: 2022-06-22 10:01+0000\n"
+"PO-Revision-Date: 2022-10-04 07:16+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: hpcdd\n"
 "Language: bg_BG\n"
@@ -21,52 +21,31 @@ msgstr ""
 msgid "Hierarchy Product Category Drop Down"
 msgstr "Йерархично падащо меню с категории"
 
-#. Plugin URI of the plugin
-#. Author URI of the plugin
-msgid "https://blacktiehost.com"
-msgstr "https://blacktiehost.com"
-
-#. Description of the plugin
-msgid "Show hierarchy dropdown to search woocommerce products per category."
-msgstr ""
-"Показване на падащото йерархично меню за търсене на продукти по категория."
-
-#. Author of the plugin
-msgid "Milen Karaganski"
-msgstr "Милен Карагански"
-
 #: admin/class-hpcdd-admin.php:115
 #: admin/partials/hpcdd-admin-settings-display.php:18
 msgid "HPCDD Settings"
 msgstr "HPCDD - Настройки"
 
-#: admin/class-hpcdd-admin.php:115
-msgid "Settings"
-msgstr "Настройки"
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://blacktiehost.com"
+msgstr "https://blacktiehost.com"
 
-#: admin/class-hpcdd-admin.php:138
-msgid ""
-"There was an error adding this setting. Please try again.  If this persists, "
-"shoot us an email."
-msgstr ""
-"Има грешка при запазване на тази настройка. Ако проблемът продължава, "
-"изпратете ни имейл."
+#. Author of the plugin
+msgid "Milen Karaganski"
+msgstr "Милен Карагански"
 
 #: admin/class-hpcdd-admin.php:185
 msgid "Number of dropdown select fields"
 msgstr "Брой на падащите менюта"
 
-#: admin/class-hpcdd-admin.php:202
-msgid "These settings apply to all HPCDD functionality"
-msgstr "Тези настройки покриват всички HPCDD опции"
+#: public/partials/hpcdd-public-display.php:33
+msgid "Select First Subcategory"
+msgstr "Изберете модел"
 
 #: public/partials/hpcdd-public-display.php:22
 msgid "Select Main Category"
 msgstr "Изберете марка"
-
-#: public/partials/hpcdd-public-display.php:33
-msgid "Select First Subcategory"
-msgstr "Изберете модел"
 
 #: public/partials/hpcdd-public-display.php:39
 msgid "Select Second Subcategory"
@@ -76,7 +55,32 @@ msgstr "Изберете модификация"
 msgid "Select Third Subcategory"
 msgstr "Изберете година"
 
+#: admin/class-hpcdd-admin.php:115
+msgid "Settings"
+msgstr "Настройки"
+
+#. Description of the plugin
+msgid "Show hierarchy dropdown to search woocommerce products per category."
+msgstr ""
+"Показване на падащото йерархично меню за търсене на продукти по категория."
+
+#: admin/class-hpcdd-admin.php:205
+msgid "Show number of products in categories?"
+msgstr "Покажи броят на продуктите в категориите?"
+
 #: public/partials/hpcdd-public-display.php:53
 #: public/partials/hpcdd-public-display.php:55
 msgid "Show Products"
 msgstr "Покажи продукти"
+
+#: admin/class-hpcdd-admin.php:138
+msgid ""
+"There was an error adding this setting. Please try again.  If this persists, "
+"shoot us an email."
+msgstr ""
+"Има грешка при запазване на тази настройка. Ако проблемът продължава, "
+"изпратете ни имейл."
+
+#: admin/class-hpcdd-admin.php:202
+msgid "These settings apply to all HPCDD functionality"
+msgstr "Тези настройки покриват всички HPCDD опции"

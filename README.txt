@@ -2,8 +2,8 @@
 Contributors: milenmk
 Tags: category dropdowns, dependent category selects, product categories, search by category, woocommerce categories
 Requires at least: 3.4
-Tested up to: 6.0
-Stable tag: 1.2.0
+Tested up to: 6.0.2
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,9 @@ This plugin is inspired by the abandoned Product Category Dropdowns.
 After plugin activation, use shortcode `[hpcdd_show_selector]` to display the dropdown selects on your website
 
 == Changelog ==
+
+= 1.2.1 - Released: Oct, 4 - 2022 =
+* NEW setting to show or hide number of products after category name in drop-down
 
 = 1.2.0 - Released: Jul, 10 - 2022 =
 * fixed compatibility with some themes (showing categories instead of products)

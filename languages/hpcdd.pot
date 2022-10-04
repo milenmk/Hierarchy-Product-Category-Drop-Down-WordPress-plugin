@@ -48,8 +48,13 @@ msgstr ""
 msgid "Number of dropdown select fields"
 msgstr ""
 
+
 #: admin/class-hpcdd-admin.php:202
 msgid "These settings apply to all HPCDD functionality"
+msgstr ""
+
+#: admin/class-hpcdd-admin.php:205
+msgid "Show number of products in categories?"
 msgstr ""
 
 #: public/partials/hpcdd-public-display.php:22

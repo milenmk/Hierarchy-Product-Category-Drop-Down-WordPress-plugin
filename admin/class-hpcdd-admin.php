@@ -3,16 +3,6 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://blacktiehost.com
- * @since      1.0.0
- *
- * @package    Hpcdd
- * @subpackage Hpcdd/admin
- */
-
-/**
- * The admin-specific functionality of the plugin.
- *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
@@ -134,12 +124,17 @@ class Hpcdd_Admin
 
     public function hpcddSettingsMessages($error_message)
     {
-        switch ($error_message) {
-            case '1':
-                $message = __('There was an error adding this setting. Please try again.  If this persists, shoot us an email.', 'hpcdd');
-                $err_code = esc_attr('hpcdd_levels_setting');
-                $setting_field = 'hpcdd_levels_setting';
-                break;
+        switch ( $error_message ) {
+	        case '1':
+		        $message       = __( 'There was an error adding this setting. Please try again.  If this persists, shoot us an email.', 'hpcdd' );
+		        $err_code      = esc_attr( 'hpcdd_levels_setting' );
+		        $setting_field = 'hpcdd_levels_setting';
+		        break;
+	        case '2':
+		        $message       = __( 'There was an error adding this setting. Please try again.  If this persists, shoot us an email.', 'hpcdd' );
+		        $err_code      = esc_attr( 'hpcdd_shownumprod_setting' );
+		        $setting_field = 'hpcdd_shownumprod_setting';
+		        break;
         }
         $type = 'error';
         add_settings_error(
@@ -167,6 +162,7 @@ class Hpcdd_Admin
             // Page on which to add this section of options
             'hpcdd_general_settings'
         );
+
         unset($args);
         $args = array(
             'type' => 'input',
@@ -181,21 +177,42 @@ class Hpcdd_Admin
             'wp_data' => 'option'
         );
 
-        add_settings_field(
-            'hpcdd_levels_setting',
-            __('Number of dropdown select fields', 'hpcdd'),
-            array($this, 'hpcdd_render_settings_field'),
-            'hpcdd_general_settings',
-            'hpcdd_general_section',
-            $args
-        );
+	    add_settings_field(
+		    'hpcdd_levels_setting',
+		    __( 'Number of dropdown select fields', 'hpcdd' ),
+		    array( $this, 'hpcdd_render_settings_field' ),
+		    'hpcdd_general_settings',
+		    'hpcdd_general_section',
+		    $args
+	    );
 
+	    register_setting(
+		    'hpcdd_general_settings',
+		    'hpcdd_levels_setting',
+	    );
 
-        register_setting(
-            'hpcdd_general_settings',
-            'hpcdd_levels_setting'
-        );
+	    unset( $args );
+	    $args = array(
+		    'type'       => 'input',
+		    'subtype'    => 'checkbox',
+		    'id'         => 'hpcdd_shownumprod_setting',
+		    'name'       => 'hpcdd_shownumprod_setting',
+		    'value_type' => 'normal',
+		    'wp_data'    => 'option'
+	    );
+	    add_settings_field(
+		    'hpcdd_shownumprod_setting',
+		    __( 'Show number of products after category name?', 'hpcdd' ),
+		    array( $this, 'hpcdd_render_settings_field' ),
+		    'hpcdd_general_settings',
+		    'hpcdd_general_section',
+		    $args
+	    );
 
+	    register_setting(
+		    'hpcdd_general_settings',
+		    'hpcdd_shownumprod_setting',
+	    );
     }
 
     public function hpcdd_display_general_account()

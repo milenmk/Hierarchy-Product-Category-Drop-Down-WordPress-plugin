@@ -103,9 +103,13 @@ function options(string $parent)
     $option = '';
 
     foreach ($terms as $child) {
-        $option .= '<option value="' . $child->term_id . '">';
-        $option .= $child->name . ' (' . $child->count . ')';
-        $option .= '</option>';
+	    $option .= '<option value="' . $child->term_id . '">';
+	    if ( get_option( 'hpcdd_shownumprod_setting' ) == 1 ) {
+		    $option .= $child->name . ' (' . $child->count . ')';
+	    } else {
+		    $option .= $child->name;
+	    }
+	    $option .= '</option>';
     }
 
     echo json_encode($option);
