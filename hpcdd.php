@@ -16,7 +16,7 @@
  * Plugin Name:       Hierarchy Product Category Drop Down
  * Plugin URI:        https://wordpress.org/plugins/hpcdd/
  * Description:       Show hierarchy dropdown to search woocommerce products per category.
- * Version:           1.2.1
+ * Version:           1.3.0
  * Author:            Milen Karaganski
  * Author URI:        https://bg.blacktiehost.com
  * License:           GPL-2.0+

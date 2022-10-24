@@ -27,12 +27,25 @@
 					$(".lvl2").append(data);
 					$(".hpcdd-loader").hide();
 					$(".hpcdd-form").attr("style", "opacity:none; -moz-opacity: none;");
+					$(".lvl2").prop("disabled", false);
 					//console.log(data[0]);
 				},
 				error: function (errorThrown) {
 					console.log(errorThrown);
-				}
+				},
 			});
+
+			if (my_options.levels == 1) {
+				$(".hpcdd-submit").prop("disabled", false);
+				const button = document.querySelectorAll('.button');
+				button.forEach(button => {
+					// Remove class from each element
+					button.classList.remove('hpcddsd');
+
+					// Add class to each element
+					// box.classList.add('small');
+				});
+			}
 		});
 	}
 	$(document).ready(lvl2);
@@ -40,6 +53,7 @@
 	function lvl3() {
 		$(".lvl2").change(function () {
 			var lvl2Val = $(this).val();
+			//var levels='<?php echo get_option("hpcdd_levels_setting"); ?>';
 
 			$(".lvl3").find("option:gt(0)").remove();
 			$(".lvl4").find("option:gt(0)").remove();
@@ -61,12 +75,25 @@
 					$(".lvl3").append(data);
 					$(".hpcdd-loader").hide();
 					$(".hpcdd-form").attr("style", "opacity:none; -moz-opacity: none;");
+					$(".lvl3").prop("disabled", false);
 					//console.log(data[0]);
 				},
 				error: function (errorThrown) {
 					console.log(errorThrown);
 				}
 			});
+
+			if (my_options.levels == 2) {
+				$(".hpcdd-submit").prop("disabled", false);
+				const button = document.querySelectorAll('.button');
+				button.forEach(button => {
+					// Remove class from each element
+					button.classList.remove('hpcddsd');
+
+					// Add class to each element
+					// box.classList.add('small');
+				});
+			}
 		});
 	}
 	$(document).ready(lvl3);
@@ -95,12 +122,39 @@
 					$(".lvl4").append(data);
 					$(".hpcdd-loader").hide();
 					$(".hpcdd-form").attr("style", "opacity:none; -moz-opacity: none;");
+					$(".lvl4").prop("disabled", false);
 					//console.log(data[0]);
 				},
 				error: function (errorThrown) {
 					console.log(errorThrown);
 				}
 			});
+
+			if (my_options.levels == 3) {
+				$(".hpcdd-submit").prop("disabled", false);
+				const button = document.querySelectorAll('.button');
+				button.forEach(button => {
+					// Remove class from each element
+					button.classList.remove('hpcddsd');
+
+					// Add class to each element
+					// box.classList.add('small');
+				});
+			}
+		});
+
+		$(".lvl4").change(function () {
+			if (my_options.levels == 4) {
+				$(".hpcdd-submit").prop("disabled", false);
+				const button = document.querySelectorAll('.button');
+				button.forEach(button => {
+					// Remove class from each element
+					button.classList.remove('hpcddsd');
+
+					// Add class to each element
+					// box.classList.add('small');
+				});
+			}
 		});
 	}
 	$(document).ready(lvl4);

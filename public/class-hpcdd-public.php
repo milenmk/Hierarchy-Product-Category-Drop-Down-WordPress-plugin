@@ -96,8 +96,13 @@ class Hpcdd_Public {
          * class.
          */
 
-        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/hpcdd-public.js', array('jquery'), $this->version);
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/hpcdd-public.js', array( 'jquery' ), $this->version );
 
+		$options    = get_option( 'hpcdd_levels_setting' );
+		$scriptData = array(
+			'levels' => $options,
+		);
+		wp_localize_script( $this->plugin_name, 'my_options', $scriptData );
 	}
 
 }

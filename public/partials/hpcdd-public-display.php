@@ -34,36 +34,36 @@
                 </div>
 
                 <div class="row">
-                    <select class="hpcdd-select lvl2" name="lvl2">
+                    <select class="hpcdd-select lvl2" name="lvl2" disabled>
                         <option value=""><?php echo __('Select First Subcategory', 'hpcdd') ?></option>
                     </select>
                 </div>
 
-                <?php if (get_option('hpcdd_levels_setting') == 3 || get_option('hpcdd_levels_setting') == 4) { ?>
+	            <?php if ( get_option( 'hpcdd_levels_setting' ) == 3 || get_option( 'hpcdd_levels_setting' ) == 4 ) { ?>
                     <div class="row">
-                        <select class="hpcdd-select lvl3" name="lvl3">
-                            <option value=""><?php echo __('Select Second Subcategory', 'hpcdd') ?></option>
+                        <select class="hpcdd-select lvl3" name="lvl3" disabled>
+                            <option value=""><?php echo __( 'Select Second Subcategory', 'hpcdd' ) ?></option>
                         </select>
                     </div>
-                <?php } ?>
+	            <?php } ?>
 
-                <?php if (get_option('hpcdd_levels_setting') == 4) { ?>
+	            <?php if ( get_option( 'hpcdd_levels_setting' ) == 4 ) { ?>
                     <div class="row">
-                        <select class="hpcdd-select lvl4" name="lvl4">
-                            <option value=""><?php echo __('Select Third Subcategory', 'hpcdd') ?></option>
+                        <select class="hpcdd-select lvl4" name="lvl4" disabled>
+                            <option value=""><?php echo __( 'Select Third Subcategory', 'hpcdd' ) ?></option>
                         </select>
                     </div>
-                <?php } ?>
+	            <?php } ?>
 
                 <div class="hpcdd-button">
-                    <button type="submit" name="submit_<?php echo $this->getWidgetId(); ?>"
-                            title="<?php echo __('Show Products', 'hpcdd') ?>"
-                            class="button hpcdd-submit">
-                        <span><?php echo __('Show Products', 'hpcdd') ?></span>
+                    <button type="submit" id="submitbtn" name="submit_<?php echo $this->getWidgetId(); ?>"
+                            title="<?php echo __( 'Show Products', 'hpcdd' ) ?>"
+                            class="button hpcdd-submit hpcddsd" disabled>
+                        <span><?php echo __( 'Show Products', 'hpcdd' ) ?></span>
                     </button>
                 </div>
 
-                <img class="hpcdd-loader" src="<?php print plugins_url('/', __DIR__) . 'img/loader.gif' ?>"
+                <img class="hpcdd-loader" src="<?php print plugins_url( '/', __DIR__ ) . 'img/loader.gif' ?>"
                      hidden/>
 
             </form>
@@ -73,7 +73,7 @@
 
 <?php
 
-if (isset($_POST['submit_' . $this->getWidgetId()])) {
+if ( isset( $_POST[ 'submit_' . $this->getWidgetId() ] ) ) {
 
     $url = '';
 
