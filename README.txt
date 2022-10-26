@@ -52,6 +52,9 @@ After plugin activation, use shortcode `[hpcdd_show_selector]` to display the dr
 
 == Changelog ==
 
+= 1.3.1 - Released: Oct, 26 - 2022 =
+* Minor fixes
+
 = 1.3.0 - Released: Oct, 24 - 2022 =
 * NEW: Select dropdown is disabled until parent option is selected
 * NEW: Submit button is disabled until last option is selected
