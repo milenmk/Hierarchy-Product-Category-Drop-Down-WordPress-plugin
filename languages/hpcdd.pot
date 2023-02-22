@@ -48,6 +48,10 @@ msgstr ""
 msgid "Number of dropdown select fields"
 msgstr ""
 
+#: admin/class-hpcdd-admin.php:196
+msgid "Submit button always active"
+msgstr ""
+
 
 #: admin/class-hpcdd-admin.php:202
 msgid "These settings apply to all HPCDD functionality"

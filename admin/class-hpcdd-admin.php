@@ -135,6 +135,11 @@ class Hpcdd_Admin
 		        $err_code      = esc_attr( 'hpcdd_shownumprod_setting' );
 		        $setting_field = 'hpcdd_shownumprod_setting';
 		        break;
+            case '3':
+                $message       = __( 'There was an error adding this setting. Please try again.  If this persists, shoot us an email.', 'hpcdd' );
+                $err_code      = esc_attr( 'hpcdd_submit_always_active' );
+                $setting_field = 'hpcdd_submit_always_active';
+                break;
         }
         $type = 'error';
         add_settings_error(
@@ -213,6 +218,28 @@ class Hpcdd_Admin
 		    'hpcdd_general_settings',
 		    'hpcdd_shownumprod_setting',
 	    );
+
+        unset( $args );
+        $args = array(
+            'type'       => 'input',
+            'subtype'    => 'checkbox',
+            'id'         => 'hpcdd_submit_always_active',
+            'name'       => 'hpcdd_submit_always_active',
+            'value_type' => 'normal',
+            'wp_data'    => 'option'
+        );
+        add_settings_field(
+            'hpcdd_submit_always_active',
+            __( 'Submit button always active', 'hpcdd' ),
+            array( $this, 'hpcdd_render_settings_field' ),
+            'hpcdd_general_settings',
+            'hpcdd_general_section',
+            $args
+        );
+        register_setting(
+            'hpcdd_general_settings',
+            'hpcdd_submit_always_active',
+        );
     }
 
     public function hpcdd_display_general_account()
