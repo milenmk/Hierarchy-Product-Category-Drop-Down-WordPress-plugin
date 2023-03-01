@@ -52,6 +52,10 @@ After plugin activation, use shortcode `[hpcdd_show_selector]` to display the dr
 
 == Changelog ==
 
+= 1.4.1 - Released: Mar, 01 - 2023 =
+* Minor fixes
+* NEW: CSS styling for submit button
+
 = 1.4.0 - Released: Frb, 22 - 2023 =
 * NEW: Option to set form submit button always active
 
