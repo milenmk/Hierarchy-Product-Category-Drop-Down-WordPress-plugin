@@ -16,7 +16,7 @@
  * Plugin Name:       Hierarchy Product Category Drop Down
  * Plugin URI:        https://wordpress.org/plugins/hpcdd/
  * Description:       Show hierarchy dropdown to search woocommerce products per category.
- * Version:           1.2.0
+ * Version:           1.4.1
  * Author:            Milen Karaganski
  * Author URI:        https://bg.blacktiehost.com
  * License:           GPL-2.0+
@@ -27,7 +27,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+    die;
 }
 
 /**
@@ -35,34 +35,49 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('HPCDD_VERSION', '1.2.0');
+define('HPCDD_VERSION', '1.4.1');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-hpcdd-activator.php
  */
-function activate_hpcdd() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-hpcdd-activator.php';
-	Hpcdd_Activator::activate();
+function activate_hpcdd()
+{
+
+    require_once plugin_dir_path(__FILE__) . 'includes/class-hpcdd-activator.php';
+    Hpcdd_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-hpcdd-deactivator.php
  */
-function deactivate_hpcdd() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-hpcdd-deactivator.php';
-	Hpcdd_Deactivator::deactivate();
+function deactivate_hpcdd()
+{
+
+    require_once plugin_dir_path(__FILE__) . 'includes/class-hpcdd-deactivator.php';
+    Hpcdd_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_hpcdd' );
-register_deactivation_hook( __FILE__, 'deactivate_hpcdd' );
+register_activation_hook(__FILE__, 'activate_hpcdd');
+register_deactivation_hook(__FILE__, 'deactivate_hpcdd');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-hpcdd.php';
+require plugin_dir_path(__FILE__) . 'includes/class-hpcdd.php';
+
+/**
+ * Load translations.
+ */
+add_action('init', 'hpcdd_load_textdomain');
+
+function hpcdd_load_textdomain()
+{
+
+    load_plugin_textdomain('hpcdd', false, dirname(plugin_basename(__FILE__)) . '/languages');
+}
 
 /**
  * Begins execution of the plugin.
@@ -73,18 +88,19 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-hpcdd.php';
  *
  * @since    1.0.0
  */
-function run_hpcdd() {
+function run_hpcdd()
+{
 
-	$plugin = new Hpcdd();
-	$plugin->run();
-
+    $plugin = new Hpcdd();
+    $plugin->run();
 }
 
 add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'hpc_add_plugin_page_settings_link');
 function hpc_add_plugin_page_settings_link( $links ) {
+
     $links[] = '<a href="' .
-        admin_url( 'admin.php?page=hpcdd' ) .
-        '">' . __('Settings') . '</a>';
+               admin_url('admin.php?page=hpcdd') .
+               '">' . __('Settings') . '</a>';
     return $links;
 }
 
