@@ -52,6 +52,9 @@ After plugin activation, use shortcode `[hpcdd_show_selector]` to display the dr
 
 == Changelog ==
 
+= 1.4.2 - Released: Mar, 01 - 2023 =
+* minor fixes
+
 = 1.4.1 - Released: Mar, 01 - 2023 =
 * minor fixes
 * NEW: CSS styling for submit button

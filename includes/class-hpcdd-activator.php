@@ -1,14 +1,6 @@
 <?php
 
-/**
- * Fired during plugin activation
- *
- * @link       https://blacktiehost.com
- * @since      1.0.0
- *
- * @package    Hpcdd
- * @subpackage Hpcdd/includes
- */
+declare(strict_types = 1);
 
 /**
  * Fired during plugin activation.

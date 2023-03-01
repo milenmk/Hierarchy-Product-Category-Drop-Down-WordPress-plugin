@@ -1,17 +1,6 @@
 <?php
 
-/**
- * The file that defines the core plugin class
- *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
- *
- * @link       https://blacktiehost.com
- * @since      1.0.0
- *
- * @package    Hpcdd
- * @subpackage Hpcdd/includes
- */
+declare(strict_types = 1);
 
 /**
  * The core plugin class.
