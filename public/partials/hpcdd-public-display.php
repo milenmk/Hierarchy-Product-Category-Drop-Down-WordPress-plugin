@@ -14,7 +14,7 @@
 
 ?>
     <div class="hpcdd-selector-box" id="<?php echo $this->getWidgetId(); ?>">
-        <div class="block-content hpcdd-form">
+        <div class="hpcdd-block-content hpcdd-form">
 
             <form method="post">
 
@@ -55,26 +55,28 @@
                     </div>
                 <?php } ?>
 
-                <div class="hpcdd-button">
-                    <?php
-                    if (get_option('hpcdd_submit_always_active') == 1) {
-                        ?>
-                        <button type="submit" id="submitbtn" name="submit_<?php echo $this->getWidgetId(); ?>"
-                                title="<?php echo __('Show Products', 'hpcdd') ?>"
-                                class="button hpcdd-submit hpcddsd">
-                            <span><?php echo __('Show Products', 'hpcdd') ?></span>
-                        </button>
+                <div class="row">
+                    <div class="hpcdd-button">
                         <?php
-                    } else {
+                        if (get_option('hpcdd_submit_always_active') == 1) {
+                            ?>
+                            <button type="submit" id="submitbtn" name="submit_<?php echo $this->getWidgetId(); ?>"
+                                    title="<?php echo __('Show Products', 'hpcdd') ?>"
+                                    class="button hpcdd-submit hpcddsd">
+                                <span><?php echo __('Show Products', 'hpcdd') ?></span>
+                            </button>
+                            <?php
+                        } else {
+                            ?>
+                            <button type="submit" id="submitbtn" name="submit_<?php echo $this->getWidgetId(); ?>"
+                                    title="<?php echo __('Show Products', 'hpcdd') ?>"
+                                    class="button hpcdd-submit hpcddsd" disabled>
+                                <span><?php echo __('Show Products', 'hpcdd') ?></span>
+                            </button>
+                            <?php
+                        }
                         ?>
-                        <button type="submit" id="submitbtn" name="submit_<?php echo $this->getWidgetId(); ?>"
-                                title="<?php echo __('Show Products', 'hpcdd') ?>"
-                                class="button hpcdd-submit hpcddsd" disabled>
-                            <span><?php echo __('Show Products', 'hpcdd') ?></span>
-                        </button>
-                        <?php
-                    }
-                    ?>
+                    </div>
                 </div>
 
                 <img class="hpcdd-loader" src="<?php print plugins_url('/', __DIR__) . 'img/loader.gif' ?>"

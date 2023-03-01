@@ -16,6 +16,10 @@ img.hpcdd-loader {
     margin-left: -30px;
 }
 
+.hpcdd-block-content {
+    padding: 15px;
+}
+
 .hpcdd-selector-box select.hpcdd-select {
     width: 100%;
     margin: 0 0 8px 0;
@@ -29,4 +33,13 @@ img.hpcdd-loader {
 
 .hpcddsd:hover {
     background-color: #c9c9c9;
+}
+
+.hpcdd-button {
+    width: 100% !important;
+}
+
+.hpcdd-submit {
+    width: inherit !important;
+    text-align: center;
 }
