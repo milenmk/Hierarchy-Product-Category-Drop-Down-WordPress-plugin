@@ -15,7 +15,7 @@ This plugin displays a drop-down select with WooCommerce product categories.
 It is possible to select just one or two selects and click the search button.
 It displays only the categories that have products.
 
-=== Main Features: ===
+== Main Features: ==
 
 Displays product categories as dependent drop-down selects.
 
@@ -31,6 +31,12 @@ Use shortcode `[hpcdd_show_selector]` to display the dropdown selects on your we
 
 This plugin is inspired by the abandoned Product Category Dropdowns.
 
+== Shortcode parameters ==
+`hplevels` – set the number of dropdows, overriding the global plugin settings. For example, setting this to `hplevels="2"` will show 2 drop-downs
+
+`hptaxonomy` – set the taxonomy to be used for the dropdown. Default is `product_cat`
+
+`taxonomy_id` – set the id of the taxonomy and populate the drops-downs with it's child levels. See demo for usage.
 
 == Installation ==
 
