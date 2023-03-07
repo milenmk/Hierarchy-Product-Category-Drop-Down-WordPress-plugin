@@ -49,6 +49,8 @@ class Hpcdd
     protected $_pluginPath;
     protected $_widgetId = '';
 
+    protected $parent_id;
+
     /**
      * Define the core functionality of the plugin.
      *
@@ -242,16 +244,21 @@ class Hpcdd
      */
     public function hpcdd_shortcode($atts)
     {
+
+        // Clean parameters
+        //$this->parent_id = 0;
+
         // normalize attribute keys, lowercase
         $atts = array_change_key_case((array)$atts, CASE_LOWER);
 
         // override default attributes with user attributes
         $hpcdd_atts = shortcode_atts(
-            array(
+            [
                 'hpname' => 'hpcdd',
-                'hplevels' => '',
-                'hptaxonomy' => 'product_cat',
-            ), $atts
+                                                                            'hplevels' => '',
+                                                                                                 'hptaxonomy' => 'product_cat',
+                                                                                                                                        'taxonomy_id' => '',
+            ], $atts
         );
 
         $this->setWidgetId($hpcdd_atts['hpname']);
@@ -268,12 +275,13 @@ class Hpcdd
             update_option('hpcdd_taxonomy_setting', $hpcdd_atts['hptaxonomy'], 'yes');
         }
 
+        $this->parent_id = $hpcdd_atts['taxonomy_id'] ? : 0;
+
         ob_start();
 
         $this->toHtml();
 
         return ob_get_clean();
-
     }
 
     /**
@@ -309,7 +317,7 @@ class Hpcdd
         $hierarchical = 1;    // 1 for yes, 0 for no
         $title = '';
         $empty = 0;
-        $parentid = 0;
+        $parentid = $this->parent_id;
 
         $args = array(
             'taxonomy' => get_option('hpcdd_taxonomy_setting'),

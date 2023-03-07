@@ -3,7 +3,7 @@ Contributors: milenmk
 Tags: category dropdowns, dependent category selects, product categories, search by category, woocommerce categories
 Requires at least: 3.4
 Tested up to: 6.1.1
-Stable tag: 1.4.3
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ Max depth of categories: 3 (one main category and 3 sub-categories) i.e.
 --- Second subcategory
 ---- Third subcategory
 
-Use shortcode `[hpcdd_category_selector]` to display the dropdown selects on your website
+Use shortcode `[hpcdd_show_selector]` to display the dropdown selects on your website
 
 This plugin is inspired by the abandoned Product Category Dropdowns.
 
@@ -51,6 +51,9 @@ This plugin is inspired by the abandoned Product Category Dropdowns.
 After plugin activation, use shortcode `[hpcdd_show_selector]` to display the dropdown selects on your website
 
 == Changelog ==
+
+= 1.5.0 - Released: Mar, 07 - 2023 =
+* NEW: Options to set parent taxonomy ID via shortcode parameter
 
 = 1.4.3 - Released: Mar, 01 - 2023 =
 * bug fixes
