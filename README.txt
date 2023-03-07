@@ -32,24 +32,25 @@ Use shortcode `[hpcdd_show_selector]` to display the dropdown selects on your we
 This plugin is inspired by the abandoned Product Category Dropdowns.
 
 == Shortcode parameters ==
-`hplevels` – set the number of dropdows, overriding the global plugin settings. For example, setting this to `hplevels="2"` will show 2 drop-downs
 
-`hptaxonomy` – set the taxonomy to be used for the dropdown. Default is `product_cat`
+hplevels – set the number of dropdows, overriding the global plugin settings. For example, setting this to hplevels="2" will show 2 drop-downs
 
-`taxonomy_id` – set the id of the taxonomy and populate the drops-downs with it's child levels. See demo for usage.
+hptaxonomy – set the taxonomy to be used for the dropdown. Default is product_cat
 
-== Installation ==
+taxonomy_id – set the id of the taxonomy and populate the drops-downs with it's child levels. See demo for usage.
 
-=== Manual from zip file ===
+=== Installation ===
+
+==== Manual from zip file ====
 1. Upload `hpcdd.zip` file to the `/wp-content/plugins/` directory and unpack it
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-=== Using WordPress Installer (Option 1) ===
+==== Using WordPress Installer (Option 1) ====
 1. Go to Plugins > Add new > Upload
 2. Select `hpcdd.zip` file and click Install
 3. Activate the plugin through the 'Plugins' menu in WordPress
 
-=== Using WordPress Installer (Option 2)===
+==== Using WordPress Installer (Option 2)====
 1. Go to Plugins > Add new
 2. Search for "Hierarchy Product Category Drop Down"
 3. Click Install
