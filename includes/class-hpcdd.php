@@ -62,6 +62,7 @@ class Hpcdd
      */
     public function __construct()
     {
+
         if (defined('HPCDD_VERSION')) {
             $this->version = HPCDD_VERSION;
         } else {
@@ -76,7 +77,6 @@ class Hpcdd
 
         $this->_pluginPath = plugin_dir_path(__FILE__);
         $this->_pluginUrl = plugins_url('/', __FILE__);
-
     }
 
     /**
@@ -127,7 +127,6 @@ class Hpcdd
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/functions.php';
 
         $this->loader = new Hpcdd_Loader();
-
     }
 
     /**
@@ -145,7 +144,6 @@ class Hpcdd
         $plugin_i18n = new Hpcdd_i18n();
 
         $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
-
     }
 
     /**
@@ -162,7 +160,6 @@ class Hpcdd
 
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
-
     }
 
     /**
@@ -174,6 +171,7 @@ class Hpcdd
      */
     public function get_plugin_name()
     {
+
         return $this->plugin_name;
     }
 
@@ -185,6 +183,7 @@ class Hpcdd
      */
     public function get_version()
     {
+
         return $this->version;
     }
 
@@ -210,21 +209,25 @@ class Hpcdd
         add_action('wp_ajax_getLvl4', 'getLvl4');
         add_action('wp_ajax_nopriv_getLvl4', 'getLvl4');
 
-        add_filter('template_redirect', function () {
+        add_filter(
+            'template_redirect', function () {
+
             ob_start(null, 0, 0);
-        });
+        }
+        );
 
-        add_action('init', array($this, 'hpcdd_shortcodes_init'));
-
+        add_action('init', [$this, 'hpcdd_shortcodes_init']);
     }
 
     public function getWidgetId()
     {
+
         return $this->_widgetId;
     }
 
     public function setWidgetId($id)
     {
+
         $this->_widgetId = $id;
     }
 
@@ -233,13 +236,15 @@ class Hpcdd
      */
     public function hpcdd_shortcodes_init()
     {
-        add_shortcode('hpcdd_show_selector', array($this, 'hpcdd_shortcode'));
+
+        add_shortcode('hpcdd_show_selector', [$this, 'hpcdd_shortcode']);
     }
 
     /**
      * Shortcode for displaying the selector.
      *
      * @param array $atts
+     *
      * @return string
      */
     public function hpcdd_shortcode($atts)
@@ -255,9 +260,9 @@ class Hpcdd
         $hpcdd_atts = shortcode_atts(
             [
                 'hpname' => 'hpcdd',
-                                                                            'hplevels' => '',
-                                                                                                 'hptaxonomy' => 'product_cat',
-                                                                                                                                        'taxonomy_id' => '',
+                                                                         'hplevels' => '',
+                                                                                              'hptaxonomy' => 'product_cat',
+                                                                                                                                     'taxonomy_id' => '',
             ], $atts
         );
 
@@ -289,6 +294,7 @@ class Hpcdd
      */
     public function toHtml()
     {
+
         include plugin_dir_path(dirname(__FILE__)) . 'public/partials/hpcdd-public-display.php';
     }
 
@@ -299,10 +305,12 @@ class Hpcdd
      */
     public function cleanPostStringVal($parent)
     {
+
         //$parent = strval($parent);
         $parent = htmlspecialchars($parent);
         $parent = stripslashes($parent);
         $parent = filter_var($parent, FILTER_SANITIZE_STRING);
+
         return sanitize_text_field($parent);
     }
 
@@ -319,20 +327,19 @@ class Hpcdd
         $empty = 0;
         $parentid = $this->parent_id;
 
-        $args = array(
-            'taxonomy' => get_option('hpcdd_taxonomy_setting'),
-            'orderby' => 'name',
-            'show_count' => $show_count,
-            'pad_counts' => $pad_counts,
+        $args = [
+            'taxonomy'     => get_option('hpcdd_taxonomy_setting'),
+            'orderby'      => 'name',
+            'show_count'   => $show_count,
+            'pad_counts'   => $pad_counts,
             'hierarchical' => $hierarchical,
-            'title_li' => $title,
-            'hide_empty' => $empty,
-            'parent' => $parentid
-        );
+            'title_li'     => $title,
+            'hide_empty'   => $empty,
+            'parent'       => $parentid,
+        ];
 
         return get_categories($args);
     }
-
 
     /**
      * Run the loader to execute all of the hooks with WordPress.
@@ -341,6 +348,7 @@ class Hpcdd
      */
     public function run()
     {
+
         $this->loader->run();
     }
 
@@ -352,6 +360,7 @@ class Hpcdd
      */
     public function get_loader()
     {
+
         return $this->loader;
     }
 
